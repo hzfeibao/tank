@@ -1,5 +1,6 @@
 #include "ChoiceScene.h"
 #include "MyPaddle.h"
+#include "CityScene.h"
 
 using namespace cocos2d;
 
@@ -109,7 +110,8 @@ void ChoiceScene::touchDownAction(CCObject* sender, unsigned int controlEvent)
    else if(controlEvent == evt_start)
    {
 	//
-	
+	CCScene* scene = CityScene::scene();
+	CCDirector::sharedDirector()->replaceScene(scene);
    }
 }
 
