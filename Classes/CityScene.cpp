@@ -1,5 +1,4 @@
 #include "CityScene.h"
-#include "Tank.h"
 
 using namespace cocos2d;
 
@@ -30,6 +29,10 @@ bool CityScene::init()
     tank->setScaleY(tileSize.height*2/tankSize.height);
     tank->setPosition(ccp(winSize.width/2 - tileSize.width*2, tileSize.height));
     this->addChild(tank);
+
+    //添加手柄
+    mLayerPanel = Panel::create();
+    addChild(mLayerPanel);
 
     return true;
 }

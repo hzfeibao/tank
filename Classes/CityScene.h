@@ -2,6 +2,8 @@
 #define __CITYSCENE__H__
 
 #include "cocos2d.h"
+#include "Tank.h"
+#include "Panel.h"
 
 class CityScene : public cocos2d::CCLayer
 {
@@ -16,5 +18,7 @@ public:
     static CityScene *create(int round);
 
     CC_SYNTHESIZE(int, m_nRound, Round);
+private:
+    Panel* mLayerPanel;
 };
 #endif

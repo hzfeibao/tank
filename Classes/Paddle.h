@@ -1,6 +1,7 @@
 #ifndef __PADDLE__H__
 #define __PADDLE__H__
 #include "cocos2d.h"
+#include "Paddle.h"
 
 using namespace cocos2d;
 
