@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "ChoiceScene.h"
 
 USING_NS_CC;
 
@@ -86,9 +87,9 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
 
 void HelloWorld::menuPlayGameCallback(CCObject* pSender)
 {
-   // CCScene* pScene = ChoiceScene::scene();
-   // CCDirector::sharedDirector()->pushScene(pScene);
-   // return;
+    CCScene* pScene = ChoiceScene::scene();
+    CCDirector::sharedDirector()->pushScene(pScene);
+    return;
 }
 
 void HelloWorld::keyBackClicked()
