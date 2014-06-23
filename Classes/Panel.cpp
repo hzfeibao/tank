@@ -23,7 +23,7 @@ bool Panel::init()
     int localY[5] = {size.height*6.7 / 26, size.height*2.3 / 26, size.height*4.5f / 26, size.height*4.5f / 26, size.height*5.0 / 26};
 
     Paddle* paddle[] = {m_pPaddleUp, m_pPaddleDown, m_pPaddleLeft, m_pPaddleRight, m_pPaddleFire};
-    for(int i = 0; i < sizeof(paddle)/sizeof(paddle[0]); ++i)
+    for(int i = 0; (unsigned)i < sizeof(paddle)/sizeof(paddle[0]); ++i)
     {
 	addChild(paddle[i]);
 	paddle[i]->setPosition(ccp(localX[i], localY[i]));
@@ -45,7 +45,7 @@ enumOrder Panel::getOrder()
 	order = cmdGoLeft;
     else if(m_pPaddleRight->getstate() == kPaddleStateGrabbed)
 	order = cmdGoRight;
-    else if(m_pPaddleFire->getstatue() == kPaddleStateGrabbed)
+    else if(m_pPaddleFire->getstate() == kPaddleStateGrabbed)
 	order = cmdFire;
     return order;
 }
