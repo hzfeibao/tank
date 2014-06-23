@@ -24,6 +24,7 @@ bool CityScene::init()
     //将坦克缩放到合适大小，然后放到地图中合适位置
     CCSize tileSize = tmxFile->getTileSize();
     Tank* tank = Tank::createTankWithTankType("player2U.png");
+    mPlayerTank[0] = tank;
     CCSize tankSize = tank->getContentSize();
     tank->setScaleX(tileSize.width*2/tankSize.width);
     tank->setScaleY(tileSize.height*2/tankSize.height);
@@ -66,4 +67,17 @@ CityScene *CityScene::create(int round)
 	}
     }
     return NULL;
+}
+
+void CityScene::onEnter()
+{
+    CCLayer::onEnter();
+    this->scheduleUpdate();
+}
+
+void CityScene::update(float delta)
+{
+    CCLayer::update(delta);
+    //mPlayerTank[0]->setPositionY(mPlayerTank[0]->getPositionY()+1);
+    mPlayerTank[0]->command(mLayerPanel->getOrder());
 }

@@ -11,6 +11,8 @@ public:
     CityScene();
     ~CityScene();
     virtual bool init();
+    virtual void onEnter();
+    virtual void update(float delta);
 
     static cocos2d::CCScene *scene();
     static cocos2d::CCScene *scene(int round);
@@ -20,5 +22,6 @@ public:
     CC_SYNTHESIZE(int, m_nRound, Round);
 private:
     Panel* mLayerPanel;
+    Tank* mPlayerTank[2];
 };
 #endif

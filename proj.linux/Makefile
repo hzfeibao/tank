@@ -4,7 +4,14 @@ INCLUDES = -I.. -I../Classes
 
 SOURCES = main.cpp \
         ../Classes/AppDelegate.cpp \
-        ../Classes/HelloWorldScene.cpp
+        ../Classes/HelloWorldScene.cpp\
+	../Classes/ChoiceScene.cpp\
+	../Classes/Paddle.cpp\
+	../Classes/MyPaddle.cpp\
+	../Classes/CityScene.cpp\
+	../Classes/Tank.cpp\
+	../Classes/Panel.cpp\
+
 
 COCOS_ROOT = ../../..
 include $(COCOS_ROOT)/cocos2dx/proj.linux/cocos2dx.mk
