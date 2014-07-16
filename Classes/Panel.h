@@ -21,9 +21,9 @@ enum enumOrder
 {
     cmdNothing,
     cmdGoUP,
-    cmdGoRight,
     cmdGoDown,
     cmdGoLeft,
+    cmdGoRight,
     cmdFire
 };
 

@@ -10,17 +10,32 @@ Tank::~Tank()
 
 }
 
-Tank* Tank::createTankWithTankType(const char* tankType)
+Tank* Tank::createTankWithTankType(const char* tankTypeName, TileMapInfo* tileMapInfo)
 {
-    CCSpriteFrameCache* pCache = CCSpriteFrameCache::sharedSpriteFrameCache();
-    pCache->addSpriteFramesWithFile("tank.plist");
+	CCSpriteFrameCache* pCache = CCSpriteFrameCache::sharedSpriteFrameCache();
+	pCache->addSpriteFramesWithFile("tank.plist");
 
-    Tank* tank = new Tank();
-    tank->initWithSpriteFrameName(tankType);
-    tank->autorelease();
+	Tank* tank = new Tank();
+	tank->initTankWithTankType(tankTypeName, tileMapInfo);
+	tank->autorelease();
 
-    return tank;
+	return tank;
 }
+
+void Tank::initTankWithTankType(const char* tankTypeName, TileMapInfo* tileMapInfo)
+{
+	initWithSpriteFrameName(tankTypeName);
+	mTileMapInfo = tileMapInfo;
+
+	mTileMapInfo->getTileMap()->addChild(this);
+
+	CCTMXTiledMap* tmxTileMap = mTileMapInfo->getTileMap();
+	CCSize tileSize = tmxTileMap->getTileSize();
+	CCSize tankSize = getContentSize();
+
+	setScale((tileSize.height * 2-4) / (tankSize.height));
+}
+
 
 void Tank::command(enumOrder order)
 {
@@ -34,25 +49,35 @@ void Tank::command(enumOrder order)
 	    break;
 	case cmdGoUP:
 	    stepY = 1.0f;
+	    fRotation = 0.0f;
 	    CCLOG("up");
+	    break;
 	case cmdGoDown:
 	    stepY = -1.0f;
 	    fRotation = 180.0f;
 	    CCLOG("down");
+	    break;
 	case cmdGoLeft:
 	    stepX = -1.0f;
 	    fRotation = 270.0f;
 	    CCLOG("left");
+	    break;
 	case cmdGoRight:
 	    stepX = 1.0f;
 	    fRotation = 90.0f;
 	    CCLOG("right");
+	    break;
 	case cmdFire:
 	    break;
 	default:
 	    break;
     }
-    setPositionX(getPositionX()+stepX);
-    setPositionY(getPositionY()+stepY);
+	CCRect rect = this->boundingBox();
+	if (!mTileMapInfo->collisionTest(CCRectMake(rect.getMinX() + stepX, 
+		rect.getMinY() + stepY, rect.size.width, rect.size.height)))
+	{
+		setPositionX(getPositionX() + stepX);
+		setPositionY(getPositionY() + stepY);
+	}
     setRotation(fRotation);
 }

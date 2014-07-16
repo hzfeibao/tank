@@ -11,6 +11,7 @@ SOURCES = main.cpp \
 	../Classes/CityScene.cpp\
 	../Classes/Tank.cpp\
 	../Classes/Panel.cpp\
+	../Classes/TileMapInfo.cpp\
 
 
 COCOS_ROOT = ../../..

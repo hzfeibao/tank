@@ -9,11 +9,11 @@ bool Panel::init()
     m_pPaddleUp = Paddle::paddleWithTexture(paddleTexture);
     paddleTexture = CCTextureCache::sharedTextureCache()->addImage(RES_PADDLE_DOWN);
     m_pPaddleDown = Paddle::paddleWithTexture(paddleTexture);
-    paddleTexture = CCTextureCache::sharedTextureCache()->addImage(RES_PADDLE_DOWN);
-    m_pPaddleLeft = Paddle::paddleWithTexture(paddleTexture);
     paddleTexture = CCTextureCache::sharedTextureCache()->addImage(RES_PADDLE_LEFT);
-    m_pPaddleRight = Paddle::paddleWithTexture(paddleTexture);
+    m_pPaddleLeft = Paddle::paddleWithTexture(paddleTexture);
     paddleTexture = CCTextureCache::sharedTextureCache()->addImage(RES_PADDLE_RIGHT);
+    m_pPaddleRight = Paddle::paddleWithTexture(paddleTexture);
+    paddleTexture = CCTextureCache::sharedTextureCache()->addImage(RES_PADDLE_FIRE);
     m_pPaddleFire = Paddle::paddleWithTexture(paddleTexture);
 
     CCSize size = getContentSize();
