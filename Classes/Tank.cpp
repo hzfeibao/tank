@@ -1,4 +1,5 @@
 #include "Tank.h"
+#include "Bullet.h"
 
 Tank::Tank()
 {
@@ -34,6 +35,7 @@ void Tank::initTankWithTankType(const char* tankTypeName, TileMapInfo* tileMapIn
 	CCSize tankSize = getContentSize();
 
 	setScale((tileSize.height * 2-4) / (tankSize.height));
+	mBullet = Bullet::createBulletWithTank(this);
 }
 
 
@@ -68,6 +70,7 @@ void Tank::command(enumOrder order)
 	    CCLOG("right");
 	    break;
 	case cmdFire:
+	    mBullet->fire();
 	    break;
 	default:
 	    break;

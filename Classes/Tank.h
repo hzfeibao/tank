@@ -7,6 +7,8 @@
 
 using namespace cocos2d;
 
+class Bullet;
+
 class Tank : public CCSprite
 {
 public:
@@ -18,5 +20,6 @@ public:
     void command(enumOrder order);
 private:
     CC_SYNTHESIZE(TileMapInfo*, mTileMapInfo, TileMapInfo);
+    Bullet* mBullet;
 };
 #endif
